@@ -27,10 +27,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
-ALLOWED_HOSTS = ["api.caribiasiswa.com", "localhost"]
+ALLOWED_HOSTS = ["api.caribiasiswa.com", "localhost", "0.0.0.0"]
 
 
 # Application definition
