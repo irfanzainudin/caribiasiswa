@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 DEBUG = True
 # DEBUG = False
 
-ALLOWED_HOSTS = ["api.caribiasiswa.com", "localhost", "0.0.0.0"]
+ALLOWED_HOSTS = [os.environ.get("DOMAIN_NAME"), "localhost", "0.0.0.0", os.environ.get("SERVER_IP")]
 
 
 # Application definition
