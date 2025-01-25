@@ -7,7 +7,7 @@ import List from "./components/List"
 function App() {
 
   return (
-    <div className="bg">
+    <div className="w-full">
     <Header/>
        <HeroSection/>
        <div className="flex items-center justify-between mx-50 px-5 mt-10">
