@@ -1,5 +1,7 @@
 import Header from "./components/Header"
 import HeroSection from "./components/heroSection"
+import Searchbar from "./components/Searchbar"
+import List from "./components/List"
 
 
 function App() {
@@ -7,17 +9,12 @@ function App() {
   return (
     <>
     <Header/>
-      <div className="mt-8 flex flex-col gap-4 text-center">
-          <h1 className="text-3xl font-bold sm:text-4xl">
-            Available Scholarship For You
-          </h1>
-          <div className="mx-auto max-w-sm space-y-4 rounded-lg text-gray-500">
-            <p className="text-sm italic">
-              Study sampai ke negara china
-            </p>
-          </div>
-        </div>
        <HeroSection/>
+       <div className="mx-50 px-5 justify-center">
+        <Searchbar className="bg-slate-400"/>
+       </div>
+       <List/>
+
     </>
   )
 }
