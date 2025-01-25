@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @theme {
   --main-bg: #EEF4FC; /* Custom background color */
