@@ -126,8 +126,8 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 
 if DEBUG == False:
-    STATIC_ROOT = '/var/www/deals.wiki/static/'
-    MEDIA_ROOT = '/var/www/deals.wiki/media/'
+    STATIC_ROOT = '/var/www/caribiasiswa.com/static/'
+    MEDIA_ROOT = '/var/www/caribiasiswa.com/media/'
 else:
     # STATIC_ROOT = BASE_DIR / 'static'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
