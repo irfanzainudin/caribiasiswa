@@ -45,7 +45,7 @@ const HeroSection = () => {
       }
     ]
 return (
-  <main className="mx-auto mt-8 flex w-full max-w-screen-lg flex-col gap-2">
+  <main className="mx-auto mt-8 flex w-full max-w-screen-lg flex-col gap-2 mb-30">
   {scholarship.map((kelas) => (
     <a
       key={kelas.websiteUrl}
