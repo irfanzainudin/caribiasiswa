@@ -1,25 +1,29 @@
-import Header from "./components/Header"
-import HeroSection from "./components/HeroSection"
-import Searchbar from "./components/Searchbar"
-import List from "./components/List"
-
+import Header from "./components/Header";
+import HeroSection from "./components/HeroSection";
+import Searchbar from "./components/Searchbar";
+import List from "./components/List";
 
 function App() {
-
   return (
     <div className="w-full">
-    <Header/>
-       <HeroSection/>
-       <div className="flex items-center justify-between mx-50 px-5 mt-10">
+      {/* Header */}
+      <Header />
+
+      {/* Hero Section */}
+      <HeroSection />
+
+      {/* Searchbar and Filter Button */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-5 mt-10">
         <Searchbar />
-        <button className="bg-white text-gray-800 border border-gray-300 px-3 py-1 rounded hover:bg-gray-100 text-sm">
-            Filter
+        <button className="bg-white text-gray-800 border border-gray-300 px-3 py-2 rounded-md hover:bg-gray-100 text-sm w-full sm:w-auto">
+          Filter
         </button>
       </div>
-       <List/>
 
+      {/* Scholarship List */}
+      <List />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
