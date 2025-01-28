@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Link } from "react-router";
 
-const Header = () => {
+const Header = ({ user }: any) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -25,10 +26,20 @@ const Header = () => {
 
         {/* Navigation Links (Hidden on Mobile, Visible on Desktop) */}
         <div className="hidden sm:flex items-center gap-4">
-          <div className="text-sm">Sign In</div>
-          <button className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
-            Sign Up
-          </button>
+          {user ? (
+            <p>Logged in as: <Link to="/profile">{user.username}</Link></p>
+          ) : (
+            <>
+              <div className="text-sm">
+                <a href="/login">
+                  Sign In
+                </a>
+              </div>
+              <button className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+                Sign Up
+              </button>
+            </>
+          )}
         </div>
       </div>
 

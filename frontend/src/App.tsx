@@ -1,28 +1,31 @@
-import Header from "./components/Header";
-import HeroSection from "./components/HeroSection";
-import Searchbar from "./components/Searchbar";
-import List from "./components/List";
+import { useState, createContext, useContext } from "react";
+import { BrowserRouter, Routes, Route } from "react-router";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Logout from "./pages/Logout";
+import Profile from "./pages/Profile";
+
+// TODO: Have to persist the data somehow
+const AuthContext = createContext(null);
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+  
   return (
-    <div className="w-full">
-      {/* Header */}
-      <Header />
-
-      {/* Hero Section */}
-      <HeroSection />
-
-      {/* Searchbar and Filter Button */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-5 mt-10">
-        <Searchbar />
-        <button className="bg-white text-gray-800 border border-gray-300 px-3 py-2 rounded-md hover:bg-gray-100 text-sm w-full sm:w-auto">
-          Filter
-        </button>
-      </div>
-
-      {/* Scholarship List */}
-      <List />
-    </div>
+    <AuthContext.Provider value={currentUser}>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home user={currentUser} />} />
+        <Route path="/login" element={<Login setUser={setCurrentUser} />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/profile" element={<Profile user={currentUser} />} />
+        {/* <Route path="dashboard" element={<Dashboard />}>
+          <Route index element={<RecentActivity />} />
+          <Route path="project/:id" element={<Project />} />
+        </Route> */}
+      </Routes>
+    </BrowserRouter>
+  </AuthContext.Provider>
   );
 }
 
