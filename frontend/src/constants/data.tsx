@@ -1,6 +1,17 @@
+export type Scholarship = {
+    deadline: string;
+    sponsor: string;
+    status: "Open" | "Closed";
+    description: string;
+    websiteUrl: string;
+    title: string;
+    categories: string[];
+  };
+  
+
 export const scholarships = [
     {
-        "deadline": "Ongoing", "sponsor": "N/A", "status": "Open",
+        "deadline": "Ongoing", "sponsor": "N/A", "status": "Closed",
         "description": "In driving and transforming MSU towards excellence, financial assistance has been provided to outstanding or underprivileged students, inclusive of those from lower middle-income nations, to acquire quality education. The funds are distributed throug...",
         "websiteUrl": "https://studymalaysia.com/scholarships/management-and-science-university-financial-aid",
         "title": "Management and Science University Financial Aid", "categories": ["Study Local", "Postgraduate", "Engineering"]
