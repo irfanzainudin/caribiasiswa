@@ -30,7 +30,15 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = [os.environ.get("DOMAIN_NAME"), "localhost", "0.0.0.0", os.environ.get("SERVER_IP")]
+ALLOWED_HOSTS = [
+    os.environ.get("DOMAIN_NAME"),
+    os.environ.get("WWW_DOMAIN_NAME"),
+    os.environ.get("API_DOMAIN_NAME"),
+    "localhost",
+    "0.0.0.0",
+    os.environ.get("SERVER_IP"),
+    "localhost:5173",
+]
 
 
 # Application definition
@@ -44,10 +52,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'api.apps.ApiConfig',
+    'corsheaders',
     'drf_spectacular'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -140,6 +150,7 @@ else:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Authentication
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
@@ -152,6 +163,7 @@ REST_FRAMEWORK = {
 }
 
 # Documentation using drf-spectacular
+
 SPECTACULAR_SETTINGS = {
     'TITLE': 'CariBiasiswa API',
     'DESCRIPTION': '',
@@ -159,3 +171,48 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
 }
+
+# CSRF & CORS
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:5173'
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5173',
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'http_x_csrftoken',
+    'x-csrftoken',
+    'x-requested-with',
+    'access-control-allow-origin'
+]
+
+CORS_EXPOSE_HEADERS = ['content-type', 'x-csrftoken']
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = False

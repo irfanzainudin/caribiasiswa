@@ -35,6 +35,7 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 class LoginView(generics.ListCreateAPIView):
     permission_classes = [AllowAny]
+    serializer_class = UserSerializer
 
     def post(self, request):
         username = request.data.get('username')
@@ -43,10 +44,15 @@ class LoginView(generics.ListCreateAPIView):
         
         if user is not None:
             login(request, user)
+            # context = {
+            #     'detail': 'Successfully logged in',
+            #     'user': UserSerializer(user).data
+            # }
+            # return redirect("http://localhost:5173/", context)
             return Response({
                 'detail': 'Successfully logged in',
                 'user': UserSerializer(user).data
-            })
+            }, status=status.HTTP_200_OK)  # Force 200 response
         else:
             return Response(
                 {'detail': 'Invalid credentials'},
@@ -60,6 +66,8 @@ class LoginView(generics.ListCreateAPIView):
 
 class LogoutView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
+    queryset = []
+    serializer_class = UserSerializer
 
     def post(self, request):
         logout(request)
