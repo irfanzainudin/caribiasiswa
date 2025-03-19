@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, Button, Input } from '@mui/material';
 import { useNavigate } from "react-router";
 
@@ -7,7 +7,8 @@ function Login({ setUser }: any) {
   const [error, setError] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   var [csrfToken, setCSRFToken] = useState("");
-  const [userData, setUserData] = useState(null);
+  // const [userData, setUserData] = useState(null);
+  const [_, setUserData] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,17 +54,17 @@ function Login({ setUser }: any) {
     }
   };
 
-  const handleLogout = async () => {
-    try {
-      await fetch('http://localhost:8001/logout/', {
-        method: 'POST',
-        credentials: 'include',
-      });
-      setIsAuthenticated(false);
-    } catch (err) {
-      setError('Logout failed');
-    }
-  };
+  // const handleLogout = async () => {
+  //   try {
+  //     await fetch('http://localhost:8001/logout/', {
+  //       method: 'POST',
+  //       credentials: 'include',
+  //     });
+  //     setIsAuthenticated(false);
+  //   } catch (err) {
+  //     setError('Logout failed');
+  //   }
+  // };
 
   if (isAuthenticated) {
     navigate("/");

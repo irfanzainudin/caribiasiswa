@@ -2,15 +2,15 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
-import Searchbar from "../components/Searchbar";
+// import Searchbar from "../components/Searchbar";
 import List from "../components/List";
 
 import { scholarships } from "../constants/data";
-import { Scholarship } from "../constants/data"; // Import the type
+// import { Scholarship } from "../constants/data"; // Import the type
 
 
 function Home({user}: any) {
-
+// function Home() {
   const [filter, setFilter] = useState<{ status: string; category: string }>({
     status: "",
     category: "",
@@ -34,7 +34,7 @@ function Home({user}: any) {
   return (
     <div className="w-full">
       {/* Header */}
-      <Header />
+      <Header user={user} />
 
       {/* Hero Section */}
       <HeroSection />
