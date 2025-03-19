@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:prod": "tsc -b && vite build && cp -Rv dist/* /var/www/caribiasiswa.com/html/",
     "lint": "eslint .",
     "preview": "vite preview"
   },
